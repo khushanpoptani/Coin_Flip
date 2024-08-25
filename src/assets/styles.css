@@ -1,0 +1,189 @@
+/* General reset */
+body, h1, button, input, select, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Background with Image */
+body {
+    background: url('../../public/images/coin_toss.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden; /* Prevents scrollbars caused by the image */
+}
+
+/* Container with Larger Elements and Central Alignment */
+.container {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    background: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
+    border-radius: 30px; /* Increased rounding for a smoother look */
+    padding: 50px 60px; /* Larger padding for more space */
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.9); /* Stronger shadow for depth */
+    text-align: center;
+    max-width: 600px; /* Increased width for more content space */
+    width: 100%; /* Responsive width */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    position: relative; /* Ensure the container is the reference for absolute positioning */
+    z-index: 1;
+}
+
+/* Title */
+h1 {
+    font-size: 2.5em; /* Reduced title size for normal look */
+    margin-bottom: 30px;
+    font-weight: 600; /* Standard font weight */
+    color: #f8e71c; /* Bitcoin gold color */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+}
+
+/* Input Fields with Focus Animation */
+input[type="text"],
+input[type="number"],
+select {
+    width: calc(100% - 70px); /* Adjust width to leave space for the icon */
+    padding: 15px; /* Larger padding for easier interaction */
+    font-size: 1.1em; /* Standard font size */
+    margin-bottom: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.25); /* Slightly stronger border */
+    border-radius: 15px; /* Increased rounding for a smoother look */
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker input background */
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative; /* Position relative to allow for the icon placement */
+}
+
+input:focus, select:focus {
+    border-color: #f8e71c; /* Bitcoin gold color for focus */
+    box-shadow: 0 0 10px #f8e71c;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Position the question mark icon inside the input field */
+.instructions-icon {
+    position: absolute;
+    top: 50%; /* Align with the input field vertically */
+    right: 20px; /* Position it inside the input field on the right */
+    transform: translateY(-50%); /* Adjust to center vertically */
+    width: 50px; /* Increased size for prominence */
+    height: 50px;
+    background-color: #f8e71c; /* Bitcoin gold color */
+    border-radius: 50%;
+    color: black; /* Darker text color for contrast */
+    font-size: 1.8em; /* Larger font size for better readability */
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover transition */
+}
+
+.instructions-icon:hover {
+    background-color: #e2b400; /* Slightly darker gold on hover */
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Display Modal on Hover */
+.instructions-icon:hover + #instructions-modal {
+    display: block;
+    opacity: 1;
+    animation: modalFadeIn 0.5s forwards;
+}
+
+/* Modal Pop-Up for Instructions */
+.modal {
+    display: none;
+    position: absolute; /* Changed from fixed to absolute */
+    top: 100px; /* Adjust top based on your layout */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9); /* Darker modal background */
+    padding: 25px; /* Increased padding for more space */
+    border-radius: 15px; /* Increased rounding for a smoother look */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+    opacity: 0;
+    animation: modalFadeIn 0.5s forwards;
+    color: #f8e71c; /* Bitcoin gold color */
+    font-size: 1.2em; /* Slightly larger font size */
+}
+
+/* Buttons with Hover Animation */
+button {
+    width: 100%;
+    padding: 18px; /* Larger padding for easier interaction */
+    font-size: 1.2em; /* Normal font size */
+    color: black;
+    background: #f8e71c; /* Bitcoin gold color */
+    border: none;
+    border-radius: 15px; /* Increased rounding for a smoother look */
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05); /* Slightly larger hover effect */
+    background: #e2b400; /* Slightly darker gold on hover */
+    box-shadow: 0 0 20px #f8e71c;
+    animation: pulse 1s infinite;
+}
+
+/* Result Text Pop-In Animation */
+#result {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popIn 0.5s ease forwards;
+    font-size: 1.2em; /* Normal font size */
+    font-weight: 600; /* Standard font weight */
+    color: #f8e71c; /* Bitcoin gold color */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+}
+
+/* Container Fade-In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Pulse Animation on Hover */
+@keyframes pulse {
+    0% { box-shadow: 0 0 15px #f8e71c; }
+    50% { box-shadow: 0 0 30px #f8e71c; }
+    100% { box-shadow: 0 0 15px #f8e71c; }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 40px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    button {
+        font-size: 1.2em;
+    }
+
+    input, select {
+        font-size: 1.1em;
+    }
+
+    #result {
+        font-size: 1.3em;
+    }
+}
