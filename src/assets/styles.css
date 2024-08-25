@@ -145,11 +145,23 @@ button:hover {
     opacity: 0;
     transform: scale(0.8);
     animation: popIn 0.5s ease forwards;
-    font-size: 1.2em; /* Normal font size */
-    font-weight: 600; /* Standard font weight */
+    font-size: 1.5em; /* Slightly larger font size for emphasis */
+    font-weight: 600;
     color: #f8e71c; /* Bitcoin gold color */
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+    margin-top: 20px; /* Added spacing for better layout */
 }
+
+#result.win {
+    color: #00ff00; /* Green for win */
+}
+
+#result.lose {
+    color: #ff4b4b; /* Red for loss */
+}
+
+
+
 
 /* Container Fade-In Animation */
 @keyframes fadeIn {
@@ -162,6 +174,11 @@ button:hover {
     0% { box-shadow: 0 0 15px #f8e71c; }
     50% { box-shadow: 0 0 30px #f8e71c; }
     100% { box-shadow: 0 0 15px #f8e71c; }
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 /* Responsive Design */
@@ -186,4 +203,24 @@ button:hover {
     #result {
         font-size: 1.3em;
     }
+}
+
+.loader {
+    border: 8px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border-top: 8px solid #f8e71c; /* Bitcoin gold for the active border */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* Spin animation for the loader */
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
