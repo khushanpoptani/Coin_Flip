@@ -1,0 +1,13 @@
+{
+    "name": "my-coinflip-game",
+    "version": "1.0.0",
+    "description": "A Bitcoin-based coinflip game",
+    "main": "index.js",
+    "scripts": {
+      "start": "node src/js/app.js"
+    },
+    "dependencies": {
+      "bitcoinjs-lib": "^5.2.0"
+    }
+  }
+  
